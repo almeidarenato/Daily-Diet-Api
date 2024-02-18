@@ -81,5 +81,19 @@ def get_user_meals(user_id):
         return jsonify({"message":meal_data}), 200
     return jsonify({"message": "Refeição não encontada"}),404
 
+@app.route("/meal/<int:id_meal>",methods=['GET'])
+def get_meal(id_meal):
+    meal = Meal.query.get(id_meal)
+    if meal:
+        return jsonify({"meal":{
+            "nome": meal.name,
+                    "descrição": meal.description,
+                    "data_hora": meal.date_time,
+                    "dentro_dieta": meal.inside_diet,
+                    "id_usuario": meal.user_id,
+                    "usuario": meal.user.username
+        }}), 200
+    return jsonify({"message": "Refeição não econtrada"}),404
+
 if __name__ == '__main__':
     app.run(debug=True)
