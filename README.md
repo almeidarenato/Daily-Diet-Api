@@ -9,8 +9,8 @@ https://www.docker.com/products/docker-desktop/
 
 # Run Docker for MySql
 
-Requires docker desktop installed.\
-On bash run **one** of this
+This project requires docker desktop installed to run mysql database\
+On bash run **one** of these commands:
 
 ```sh
 docker-compose up
@@ -27,7 +27,7 @@ Use the following command on the terminal
 ```sh
 pip3 install -r requirements.txt
 ```
-create data bases with flask shell
+Ensure that docker is up and running and you've run the docker-composer command. Then , create the tables of the database with the following commands: 
 
 ```sh
 # Enters the flask shell on the terminal
