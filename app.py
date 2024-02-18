@@ -58,6 +58,15 @@ def update_meal(id_meal):
     
     return jsonify({"message":"Dados invalidos"}), 401
 
+@app.route("/meals/<int:id_meal>",methods=['DELETE'])
+def delete_meal(id_meal):
+    meal = Meal.query.get(id_meal)
+    if meal:
+        db.session.delete(meal)
+        db.session.commit()
+        return jsonify({"message":f"Refeição {id_meal} deletada com sucesso"}),200
+    return jsonify({"message":f"Refeição {id_meal} não encontrada" }), 404
+
 
 if __name__ == '__main__':
     app.run(debug=True)
