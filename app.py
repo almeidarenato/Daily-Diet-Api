@@ -22,7 +22,7 @@ def create_meal():
     inside_diet = data.get("dentro_da_dieta")
     user_id = int(data.get("usuario"))
 
-    if name and description and date_time and inside_diet and user_id:
+    if name and description and date_time and user_id:
         user = User.query.filter_by(id=user_id).first()
         if user:
             meal = Meal(name=name,description=description,date_time=date_time,inside_diet=inside_diet,user_id=user.id)
