@@ -9,9 +9,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:admin123@127.0.0.1
 
 db.init_app(app)
 
-@app.route("/test",methods=['GET'])
-def test():
-    return jsonify({"message": "Testing my app"}),200
 
 @app.route("/meals",methods=['POST'])
 def create_meal():
