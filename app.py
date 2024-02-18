@@ -67,6 +67,19 @@ def delete_meal(id_meal):
         return jsonify({"message":f"Refeição {id_meal} deletada com sucesso"}),200
     return jsonify({"message":f"Refeição {id_meal} não encontrada" }), 404
 
+@app.route("/meals/<int:user_id>",methods=['GET'])
+def get_user_meals(user_id):
+    meals = Meal.query.filter(user_id==user_id).all()
+    if meals:
+        meal_data = [{"id": meal.id,
+                    "nome": meal.name,
+                    "descrição": meal.description,
+                    "data_hora": meal.date_time,
+                    "dentro_dieta": meal.inside_diet,
+                    "id_usuario": meal.user_id,
+                    "usuario": meal.user.username} for meal in meals]
+        return jsonify({"message":meal_data}), 200
+    return jsonify({"message": "Refeição não encontada"}),404
 
 if __name__ == '__main__':
     app.run(debug=True)
